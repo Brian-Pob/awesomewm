@@ -212,8 +212,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     -- awful.tag({ "A", "2", "3", "4", "5", "6" }, s, awful.layout.layouts[1])
     
-	awful.tag.add("", { -- Browser
-		icon               = "/home/bp/Pictures/Icons/google-chrome.svg",
+	awful.tag.add("Browser", { -- Browser
+		icon               = string.format("%s/.config/awesome/Icons/google-chrome.svg", os.getenv("HOME")),
 		layout             = awful.layout.suit.tile,
 		master_fill_policy = "master_width_factor",
 		gap_single_client  = true,
@@ -222,8 +222,8 @@ awful.screen.connect_for_each_screen(function(s)
 		selected           = true,
 	})
 	
-	awful.tag.add("", { -- Editor
-		icon               = "/home/bp/Pictures/Icons/code-braces.svg",
+	awful.tag.add("Editor", { -- Editor
+		icon               = string.format("%s/.config/awesome/Icons/code-braces.svg", os.getenv("HOME")),
 		layout             = awful.layout.suit.tile,
 		master_fill_policy = "master_width_factor",
 		-- gap_single_client  = true,
@@ -232,8 +232,8 @@ awful.screen.connect_for_each_screen(function(s)
 		--selected           = true,
 	})
 	
-	awful.tag.add("", { -- Discord
-		icon               = "/home/bp/Pictures/Icons/forum.svg",
+	awful.tag.add("Chat", { -- Discord
+		icon               = string.format("%s/.config/awesome/Icons/forum.svg", os.getenv("HOME")),
 		layout             = awful.layout.suit.tile,
 		master_fill_policy = "master_width_factor",
 		gap_single_client  = true,
@@ -242,8 +242,8 @@ awful.screen.connect_for_each_screen(function(s)
 		--selected           = true,
 	})
 	
-	awful.tag.add("", { -- Game
-		icon               = "/home/bp/Pictures/Icons/google-controller.svg",
+	awful.tag.add("Game", { -- Game
+		icon               = string.format("%s/.config/awesome/Icons/google-controller.svg", os.getenv("HOME")),
 		layout             = awful.layout.suit.tile,
 		master_fill_policy = "expand",
 		gap_single_client  = true,
@@ -252,8 +252,8 @@ awful.screen.connect_for_each_screen(function(s)
 		--selected           = true,
 	})
 	
-	awful.tag.add("", { -- Media
-		icon               = "/home/bp/Pictures/Icons/music.svg",
+	awful.tag.add("Media", { -- Media
+		icon               = string.format("%s/.config/awesome/Icons/music.svg", os.getenv("HOME")),
 		layout             = awful.layout.suit.tile,
 		master_fill_policy = "master_width_factor",
 		gap_single_client  = true,
@@ -262,8 +262,8 @@ awful.screen.connect_for_each_screen(function(s)
 		--selected           = true,
 	})
 	
-	awful.tag.add("", { -- Others
-		icon               = "/home/bp/Pictures/Icons/flask.svg",
+	awful.tag.add("Others", { -- Others
+		icon               = string.format("%s/.config/awesome/Icons/flask.svg", os.getenv("HOME")),
 		layout             = awful.layout.suit.tile,
 		master_fill_policy = "master_width_factor",
 		gap_single_client  = true,
@@ -384,7 +384,7 @@ s.mytasklist = awful.widget.tasklist {
 -- End of tasklist
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.85 })
+    s.mywibox = awful.wibar({ position = "top", screen = s, opacity=0.85, bg = beautiful.bg_normal .. "55" })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -690,8 +690,8 @@ awful.rules.rules = {
     },
 	
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+    -- { rule = { class = "firefox" },
+    --   properties = { screen = 1, tag = "Browser" } },
 
 
 }
@@ -817,4 +817,4 @@ end
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nitrogen --restore")
-
+awful.spawn.single_instance("volumeicon")

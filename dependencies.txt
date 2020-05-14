@@ -1,0 +1,14 @@
+rofi
+firefox
+picom
+gedit
+termite
+thunar
+nitrogen
+pavucontrol
+volumeicon
+ttf-roboto
+materia
+papirus-icon-theme
+lxappearance
+xfce4-settings
