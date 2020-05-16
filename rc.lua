@@ -683,10 +683,14 @@ awful.rules.rules = {
           "AlarmWindow",  -- Thunderbird's calendar.
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
-      }, properties = { floating = true }},
-
+      }, properties = { floating = true }
+    },
+	
     -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" } },
+    { rule_any = {
+    		type = { "normal", "dialog" } 
+    		
+    	},
       properties = { titlebars_enabled = false }
     },
 	
@@ -756,10 +760,10 @@ client.connect_signal("request::titlebars", function(c)
         layout = wibox.layout.align.horizontal
     }
         -- Hide the menubar if we are not floating
-   -- local l = awful.layout.get(c.screen)
-   -- if not (l.name == "floating" or c.floating) then
-   --     awful.titlebar.hide(c)
-   -- end
+    local l = awful.layout.get(c.screen)
+    if not (l.name == "floating" or c.floating) then
+        awful.titlebar.hide(c)
+    end
 end)
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -810,8 +814,8 @@ end
 client.connect_signal("property::floating", function (c)
     if c.floating then
         awful.titlebar.show(c)
---    else
---        awful.titlebar.hide(c)
+    else
+        awful.titlebar.hide(c)
     end
 end)
 
