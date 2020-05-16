@@ -673,7 +673,8 @@ awful.rules.rules = {
           "Wpa_gui",
           "pinentry",
           "veromix",
-          "xtightvncviewer"},
+          "xtightvncviewer",
+          "xfce4-settings-manager"},
 
         name = {
           "Event Tester",  -- xev.
@@ -806,15 +807,16 @@ end
 
 -- }}}
 
---client.connect_signal("property::floating", function (c)
---    if c.floating then
---        awful.titlebar.show(c)
+client.connect_signal("property::floating", function (c)
+    if c.floating then
+        awful.titlebar.show(c)
 --    else
 --        awful.titlebar.hide(c)
---    end
---end)
+    end
+end)
 
 awful.spawn.with_shell("~/.config/awesome/autorun.sh")
 awful.spawn.with_shell("picom")
 awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.single_instance("volumeicon")
+-- awful.spawn.single_instance("volumeicon")
+-- awful.spawn.with_shell("pkill volumeicon")
