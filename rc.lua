@@ -688,8 +688,8 @@ awful.rules.rules = {
 	
     -- Add titlebars to normal clients and dialogs
     { rule_any = {
-    		type = { "normal", "dialog" } 
-    		
+    		-- type = { "normal", "dialog" } ,
+    		class = {"firefox"},
     	},
       properties = { titlebars_enabled = false }
     },
@@ -789,6 +789,10 @@ for s = 1, screen.count() do screen[s]:connect_signal("arrange", function ()
       -- NOTE: also handled in focus, but that does not cover maximizing from a
       -- tiled state (when the client had focus).
       c.border_width = 0
+      
+      -- added this line to hide titlebars when maximized. 
+      -- Don't know why it was showing in the first place
+      awful.titlebar.hide(c)
     elseif c.floating or layout == "floating" then
       c.border_width = beautiful.border_width
     elseif layout == "max" or layout == "fullscreen" then
